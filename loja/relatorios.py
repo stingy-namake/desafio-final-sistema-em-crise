@@ -12,8 +12,7 @@ def relatorio_clientes(conn):
     sql = """
         SELECT c.nome, c.cidade, COUNT(p.id) AS qtd
         FROM clientes c
-        LEFT JOIN pedidos p ON p.cliente_id = c.id
-        WHERE p.feito_em >= '2026-01-01'
+        LEFT JOIN pedidos p ON p.cliente_id = c.id AND p.feito_em >= '2026-01-01'
         GROUP BY c.id
         ORDER BY c.nome
     """
